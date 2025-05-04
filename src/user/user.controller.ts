@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, Req, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UserService } from './user.service';
 import { AuthGuard } from 'src/cores/guards/auth.guard';
@@ -17,7 +17,6 @@ export class UserController {
   @Get('/me')
   @UseGuards(AuthGuard)
   getCurrentUser(@CurrentUser() user: UserPayload) {
-    // @ts-ignore
     return user;
   }
 
