@@ -1,3 +1,4 @@
+import { Permission } from 'src/permissions/entities/permission.entity';
 import { User } from 'src/user/entities/user.entity';
 import { Column, Entity, OneToMany, PrimaryColumn } from 'typeorm';
 
@@ -14,4 +15,7 @@ export class Role {
 
   @OneToMany(() => User, (user) => user.role)
   users: User[];
+
+  @OneToMany(() => Permission, (perm) => perm.role)
+  permission: Permission[];
 }
