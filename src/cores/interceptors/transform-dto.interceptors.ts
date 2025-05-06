@@ -20,9 +20,12 @@ export class TransformDTOInterceptor<T> implements NestInterceptor {
   intercept(context: ExecutionContext, next: CallHandler): Observable<any> {
     return next.handle().pipe(
       map((data) => {
-        return plainToInstance(this.dtoClass, data, {
-          excludeExtraneousValues: true,
-        });
+        return {
+          message: 'success',
+          data: plainToInstance(this.dtoClass, data, {
+            excludeExtraneousValues: true,
+          }),
+        };
       }),
     );
   }
